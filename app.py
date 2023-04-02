@@ -11,7 +11,10 @@ def route_list():
 
 if __name__ == '__main__':
     app.run(
-        host='127.0.0.1',
-        port=5000,
-        debug=True,
+        host = '127.0.0.1',
+        port = 5000,
+        debug = True,
     )
+
+# for run the python's flask server
+# use python -m flask run
