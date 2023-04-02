@@ -8,3 +8,6 @@ First project of the 2nd Milestone on Codecool January-2023 group.
 Usage of Python's flask micro-framework.
 Questions with possible answers and voting process.
 Smiliar to StackOverflow.  
+
+#### Licence
+Created under MIT Licence. 
