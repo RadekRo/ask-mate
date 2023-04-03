@@ -11,3 +11,12 @@ header {
     text-align: center;
     box-shadow: -6px 0 white, 6px 0 white, 0 5px 3px -2px #E8E8E8;
 }
+
+#container {
+    margin: 0 auto;
+}
+
+.heading, .question-list {
+    max-width: 1000px; 
+    margin: 0 auto;
+}
