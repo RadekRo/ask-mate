@@ -17,13 +17,15 @@
                     <td>{{questions[1]}}</td>
                     <td>{{questions[2]}}</td>
                     <td>{{questions[3]}}</td>
-                    <td>{{questions[4]}}</td>
+                    <td><a href="{{ url_for('route_question',id=questions[0])}}">{{questions[4]}}</a></td>
                     <td>{{questions[5]}}</td>
                     <td>{{questions[6]}}</td>
-                    
+                
                 </tr>
                 {%endfor%}
-                
+
             </table>
         </div>
+
+
 {% endblock %}
