@@ -1,27 +1,29 @@
 {% extends "layout.html" %}
 {% block content %}
-        <div class="heading">
-            <h1>Question list</h1>
-            <h2>This is the place for showing questions</h2>
-            <h3>EAT</h3>
-            <h4>SHIT</h4>
-            <h5>CODE</h5>
-            <h6>REPEAT</h6>
-        </div>
         <div class="question-list">
             <table>
                 <tr>
-                    <th>First heading</th>
-                    <th>Second heading</th>
-                    <th>Third heading</th>
-                    <th>Fourth heading</th>
+                    <th>ID</th>
+                    <th>submission_time</th>
+                    <th>view_number</th>
+                    <th>vote_number</th>
+                    <th>title</th>
+                    <th>message</th>
+                    <th>image</th>
                 </tr>
+                {% for questions in all_questions %}
                 <tr>
-                    <td>First content</td>
-                    <td>Second content</td>
-                    <td>Third content</td>
-                    <td>Fourth content</td>
+                    <td>{{questions[0]}}</td>
+                    <td>{{questions[1]}}</td>
+                    <td>{{questions[2]}}</td>
+                    <td>{{questions[3]}}</td>
+                    <td>{{questions[4]}}</td>
+                    <td>{{questions[5]}}</td>
+                    <td>{{questions[6]}}</td>
+                    
                 </tr>
+                {%endfor%}
+                
             </table>
         </div>
 {% endblock %}
