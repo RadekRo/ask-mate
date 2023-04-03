@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    }
+
+header {
+    background-color: #F8F9F9;
+    height: 40px;
+    width: 100%;
+    padding: 2px 0;
+    text-align: center;
+    box-shadow: -6px 0 white, 6px 0 white, 0 5px 3px -2px #E8E8E8;
+}
