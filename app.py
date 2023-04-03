@@ -9,7 +9,7 @@ def route_list():
     return render_template("list.html")
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()
 
 # for run the python's flask server
 # use> python -m flask run
