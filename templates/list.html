@@ -3,17 +3,15 @@
         <div class="question-list">
             <table>
                 <tr>
-                    <th>ID</th>
-                    <th>submission_time</th>
-                    <th>view_number</th>
-                    <th>vote_number</th>
+                    <th>data</th>
+                    <th>viewed</th>
+                    <th>votes</th>
                     <th>title</th>
                     <th>message</th>
                     <th>image</th>
                 </tr>
                 {% for questions in all_questions %}
                 <tr>
-                    <td>{{questions[0]}}</td>
                     <td>{{questions[1]}}</td>
                     <td>{{questions[2]}}</td>
                     <td>{{questions[3]}}</td>
