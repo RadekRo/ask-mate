@@ -3,7 +3,10 @@
 <div class="question-list">
     <a href="/">&larr; Back to questions list</a><br /><br />
     <b>{{question[4]}}</b><br /><br />
-    {{question[5]}}
+    {{question[5]}}<br /><br />
+    <div class="container">
+        <img src="{{ url_for('static', filename='/images/sample-booklet-image') }}" />
+    </div>
 
 </div>
 {% endblock %}
