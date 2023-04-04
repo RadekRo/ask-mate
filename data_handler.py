@@ -23,12 +23,4 @@ def get_question(id):
         if question[0] == id:
             return question
 
-def get_href_question(id):
-    questions = import_questions(DATA_FILE_PATH_QUESTION)
-    for question in questions:
-        if question[0] == id:
-            return id
-
-
-import_questions(DATA_FILE_PATH_QUESTION)
 
