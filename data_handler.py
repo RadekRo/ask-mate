@@ -28,4 +28,9 @@ def get_image(id):
         if question[0] == id:
             image_source = question[6]
             return image_source
+    
+def get_last_id():
+    questions = import_questions(DATA_FILE_PATH_QUESTION)
+    return questions[-1][0]
+
 

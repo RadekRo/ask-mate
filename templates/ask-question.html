@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="question-list">
+        <form action="/ask-question" method="POST">
+        <p>
+            <label for="title">Question title:</label>
+            <input id="title" name="title" type="text" value="" />
+        </p>
+        <p>
+            <label for="message">Message:</label>
+            <input id="message" name="message" type="text" value="" />
+        </p>
+        <p>
+            <label for="image">Image:</label>
+            <input type = "file" />
+        </p>
+        <button type="submit">Add your question</button>
+        <p>
+            
+        </p>
+        
+    </div>
+
+
+{% endblock %}
