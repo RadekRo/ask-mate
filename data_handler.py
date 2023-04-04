@@ -29,8 +29,19 @@ def get_image(id):
             image_source = question[6]
             return image_source
     
-def get_last_id():
+def get_next_id():
     questions = import_questions(DATA_FILE_PATH_QUESTION)
-    return questions[-1][0]
+    id = int(questions[-1][0]) + 1
+    return str(id)
 
+def add_question(question):
+    questions = import_questions(DATA_FILE_PATH_QUESTION)
+    questions.append(question)
+    save_data(DATA_FILE_PATH_QUESTION, questions)
+    
+def save_data(filename, questions, separator = ","):
+   with open(filename, "w") as file:
+        for record in questions:
+            row = separator.join(record)
+            file.write(row + "\n")
 

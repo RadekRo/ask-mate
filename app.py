@@ -1,6 +1,7 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, redirect
 import data_handler
+from datetime import datetime 
 
 app = Flask(__name__)
 
@@ -15,21 +16,13 @@ def route_question(id):
     question = data_handler.get_question(id)
     return render_template("question.html", question=question)
 
-@app.route('/ask-question', method=["POST","GET"])
+@app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
+    image = ""
     if request.method == 'POST':
-        your_question = [data_handler.get_last_id()+1,]
-            
-            'title' : request.form.get('title'),
-            'user_story' : request.form.get('user_story'),
-            'acceptance_criteria' : request.form.get('acceptance_criteria'),
-            'business_value' : request.form.get('business_value'),
-            'estimation' : request.form.get('estimation'),
-            'status' : request.form.get('status')
-        }
-
-        data_handler.add_user_story(user_story)
-        return redirect('/')
+        your_question = [data_handler.get_next_id(), str(datetime.now()), "0", "0", request.form.get('title'), request.form.get('message'), image ]
+        data_handler.add_question(your_question)
+        return redirect("/")
     return render_template("ask-question.html")
 
 
