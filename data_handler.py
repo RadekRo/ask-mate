@@ -21,5 +21,11 @@ def get_question(id):
     for question in questions:
         if question[0] == id:
             return question
-
+        
+def get_image(id):
+    questions = import_questions(DATA_FILE_PATH_QUESTION)
+    for question in questions:
+        if question[0] == id:
+            image_source = question[6]
+            return image_source
 
