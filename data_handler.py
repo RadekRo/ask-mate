@@ -2,7 +2,6 @@ import csv, os
 
 DATA_FILE_PATH_ANSWER = 'data/answer.csv'
 DATA_FILE_PATH_QUESTION = 'data/question.csv'
-FILES_EXTENSIONS = [".jpg", ".png", ".jpeg"]
 
 def import_questions(filename):
     questions = list()
