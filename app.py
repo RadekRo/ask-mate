@@ -16,7 +16,6 @@ def route_question(id):
     return render_template("question.html", question=question)
 
 
-
 if __name__ == '__main__':
     app.run()
 

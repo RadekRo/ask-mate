@@ -14,8 +14,7 @@ def import_questions(filename):
 
 
 def get_all_questions():
-    questions = import_questions(DATA_FILE_PATH_QUESTION)
-    return questions
+    return import_questions(DATA_FILE_PATH_QUESTION)
 
 
 def get_question(id):
