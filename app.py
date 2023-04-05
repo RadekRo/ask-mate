@@ -19,8 +19,9 @@ def route_question(id):
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
     image = ""
+    current_date = str(datetime.now())[0:19]
     if request.method == 'POST':
-        your_question = [data_handler.get_next_id(), str(datetime.now()), "0", "0", request.form.get('title'), request.form.get('message'), image ]
+        your_question = [data_handler.get_next_id(), current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
         data_handler.add_question(your_question)
         return redirect("/")
     return render_template("ask-question.html")

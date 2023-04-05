@@ -4,9 +4,10 @@
     <a href="/">&larr; Back to questions list</a><br /><br />
     <b>{{question[4]}}</b><br /><br />
     {{question[5]}}<br /><br />
+    {% if question[6] != "" %}
     <div class="container">
         <img src={{question[6]}}/>
     </div>
-
+    {% endif %}
 </div>
 {% endblock %}

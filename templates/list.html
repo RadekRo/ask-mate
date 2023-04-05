@@ -6,6 +6,7 @@
         <div class="question-list">
             <table>
                 <tr>
+                    <th>id</th>
                     <th>data</th>
                     <th>viewed</th>
                     <th>votes</th>
@@ -15,6 +16,7 @@
                 </tr>
                 {% for questions in all_questions %}
                 <tr>
+                    <td>{{questions[0]}}</td>
                     <td>{{questions[1]}}</td>
                     <td>{{questions[2]}}</td>
                     <td>{{questions[3]}}</td>
