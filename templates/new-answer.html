@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="question-list">
+        <form action="/new-answer" method="POST">
+            <input type="hidden" name="id" value={{id}}>
+        <p>
+            <label for="new-answer">Answer:</label><br/>
+            <textarea id="new-answer" name="new-answer" rows="4" cols="50"></textarea>
+        </p>
+        <button type="submit">Add your answer</button>
+
+    </div>
+{% endblock %}

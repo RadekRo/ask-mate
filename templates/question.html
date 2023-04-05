@@ -9,5 +9,6 @@
         <img src={{question[6]}} style="max-width: 150px"/>
     </div>
     {% endif %}
+    <a href="{{ url_for('route_answer',id=question[0])}}">Add new answer</a><br /><br />
 </div>
 {% endblock %}

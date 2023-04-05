@@ -19,7 +19,7 @@ def route_question(id):
 
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
-    next_id = data_handler.get_next_id()
+    next_id = data_handler.get_next_id("question")
     current_date = str(datetime.now())[0:19]
     
     if 'file' not in request.files:
@@ -33,6 +33,22 @@ def ask_question():
         data_handler.add_question(your_question)
         return redirect("/")
     return render_template("ask-question.html")
+
+@app.route('/question/<id>/new-answer')
+def route_answer(id):
+    return render_template("new-answer.html", id=id)
+
+@app.route('/new-answer', methods=["POST","GET"])
+def new_answer():
+    next_id = data_handler.get_next_id("answer")
+    current_date = str(datetime.now())[0:19]
+    image = ""
+    if request.method == 'POST':
+        your_answer = [next_id, current_date, "0", str(request.form.get('id')), request.form.get('new-answer'), image ]
+        new_str = "/question/" + str(request.form.get('id'))
+        data_handler.add_answer(your_answer)
+        return redirect(new_str)
+    return render_template("new-answer.html")
 
 
 if __name__ == '__main__':

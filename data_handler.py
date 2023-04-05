@@ -5,7 +5,7 @@ DATA_FILE_PATH_QUESTION = 'data/question.csv'
 UPLOAD_FOLDER = 'static/images/users/'
 ALLOWED_EXTENSIONS = {'jpg'}
 
-def import_questions(filename):
+def import_data_file(filename):
     questions = list()
     with open(filename, 'r') as file:
         csvreader = csv.reader(file)
@@ -15,27 +15,30 @@ def import_questions(filename):
 
 
 def get_all_questions():
-    return import_questions(DATA_FILE_PATH_QUESTION)
+    return import_data_file(DATA_FILE_PATH_QUESTION)
 
 
 def get_question(id):
-    questions = import_questions(DATA_FILE_PATH_QUESTION)
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
     for question in questions:
         if question[0] == id:
             return question
         
     
-def get_next_id():
-    questions = import_questions(DATA_FILE_PATH_QUESTION)
+def get_next_id(selector):
+    if selector == "answer":
+        data_file = import_data_file(DATA_FILE_PATH_ANSWER )
+    elif selector == "question":
+        data_file = import_data_file(DATA_FILE_PATH_QUESTION)
     try:
-        id = int(questions[-1][0]) + 1
+        id = int(data_file[-1][0]) + 1
     except:
         id = 1
     return str(id)
 
 
 def add_question(question):
-    questions = import_questions(DATA_FILE_PATH_QUESTION)
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
     questions.append(question)
     save_data(DATA_FILE_PATH_QUESTION, questions)
     
@@ -58,3 +61,8 @@ def save_file(file, question_id):
         return "/" + UPLOAD_FOLDER + question_id + ".jpg"
     else:
         return ""
+    
+def add_answer(answer):
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    answers.append(answer)
+    save_data(DATA_FILE_PATH_ANSWER, answers)
