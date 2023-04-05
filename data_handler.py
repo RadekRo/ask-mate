@@ -1,5 +1,4 @@
 import csv, os
-from werkzeug.utils import secure_filename
 
 DATA_FILE_PATH_ANSWER = 'data/answer.csv'
 DATA_FILE_PATH_QUESTION = 'data/question.csv'
