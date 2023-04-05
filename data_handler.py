@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 DATA_FILE_PATH_ANSWER = 'data/answer.csv'
 DATA_FILE_PATH_QUESTION = 'data/question.csv'
 UPLOAD_FOLDER = 'static/images/users/'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'jpg'}
 
 def import_questions(filename):
     questions = list()
@@ -52,8 +52,10 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def save_file(file):
-    if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(UPLOAD_FOLDER, filename))
-    return "/" + UPLOAD_FOLDER + file.filename
+def save_file(file, question_id):
+    if file and allowed_file(file.filename) and file.filename != "":
+        saved_name = question_id + ".jpg"
+        file.save(os.path.join(UPLOAD_FOLDER, saved_name))
+        return "/" + UPLOAD_FOLDER + question_id + ".jpg"
+    else:
+        return ""

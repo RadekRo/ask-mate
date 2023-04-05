@@ -19,15 +19,17 @@ def route_question(id):
 
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
+    next_id = data_handler.get_next_id()
+    current_date = str(datetime.now())[0:19]
+    
     if 'file' not in request.files:
         image = ""
     else:
         file = request.files['file']
-        image = data_handler.save_file(file)
-        
-    current_date = str(datetime.now())[0:19]
+        image = data_handler.save_file(file, next_id)
+
     if request.method == 'POST':
-        your_question = [data_handler.get_next_id(), current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
+        your_question = [next_id, current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
         data_handler.add_question(your_question)
         return redirect("/")
     return render_template("ask-question.html")
