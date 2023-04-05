@@ -1,6 +1,6 @@
 # ask-mate
 
-### Authors (in alphabetical order):
+## Authors (in alphabetical order):
 Agata Czerniawska, Anna Gruza, Grzegorz Łabojko, Radosław Rocławski, Mateusz Szałapski
 
 ### About
