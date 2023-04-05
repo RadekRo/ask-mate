@@ -3,6 +3,7 @@ from flask import render_template, request, redirect
 import data_handler
 from datetime import datetime 
 
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,7 +19,12 @@ def route_question(id):
 
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
-    image = ""
+    if 'file' not in request.files:
+        image = ""
+    else:
+        file = request.files['file']
+        image = data_handler.save_file(file)
+        
     current_date = str(datetime.now())[0:19]
     if request.method == 'POST':
         your_question = [data_handler.get_next_id(), current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
