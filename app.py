@@ -26,7 +26,7 @@ def ask_question():
         image = ""
     else:
         file = request.files['file']
-        image = data_handler.save_file(file, next_id)
+        image = data_handler.save_file(file, next_id, "question")
 
     if request.method == 'POST':
         your_question = [next_id, current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
