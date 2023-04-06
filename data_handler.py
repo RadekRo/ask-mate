@@ -2,7 +2,8 @@ import csv, os
 
 DATA_FILE_PATH_ANSWER = 'data/answer.csv'
 DATA_FILE_PATH_QUESTION = 'data/question.csv'
-UPLOAD_FOLDER = 'static/images/users/'
+UPLOAD_FOLDER_FOR_QUESTIONS = 'static/images/questions/'
+UPLOAD_FOLDER_FOR_ANSWERS = 'static/images/answers/'
 ALLOWED_EXTENSIONS = {'jpg'}
 
 def import_data_file(filename):
@@ -54,11 +55,17 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def save_file(file, question_id):
+def save_file(file, question_id, selector):
+
+    if selector == "question":
+        upload_folder = UPLOAD_FOLDER_FOR_QUESTIONS
+    elif selector == "answer":
+        upload_folder = UPLOAD_FOLDER_FOR_ANSWERS
+
     if file and allowed_file(file.filename) and file.filename != "":
         saved_name = question_id + ".jpg"
-        file.save(os.path.join(UPLOAD_FOLDER, saved_name))
-        return "/" + UPLOAD_FOLDER + question_id + ".jpg"
+        file.save(os.path.join(upload_folder, saved_name))
+        return "/" + upload_folder + question_id + ".jpg"
     else:
         return ""
     
