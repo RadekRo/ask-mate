@@ -6,6 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+
 @app.route('/')
 @app.route('/list')
 def route_list():
@@ -16,6 +17,7 @@ def route_list():
 def route_question(id):
     question = data_handler.get_question(id)
     return render_template("question.html", question=question)
+
 
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
@@ -49,6 +51,12 @@ def new_answer():
         data_handler.add_answer(your_answer)
         return redirect(new_str)
     return render_template("new-answer.html")
+
+@app.route('/question/<id>/vote', methods=["POST", "GET"])
+def route_vote(id):
+    question = data_handler.count_votes(id)
+    return render_template("vote.html", question=question)
+
 
 
 if __name__ == '__main__':

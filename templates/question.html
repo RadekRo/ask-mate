@@ -10,5 +10,8 @@
     </div>
     {% endif %}
     <a href="{{ url_for('route_answer',id=question[0])}}">Add new answer</a><br /><br />
+    <form method="post" action="{{ url_for('route_vote',id=question[0])}}">
+    <button type="submit">Vote for this question</button></form>
+    <b>Number of votes already for this question: {{question[3]}}</b>
 </div>
 {% endblock %}
