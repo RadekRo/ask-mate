@@ -55,7 +55,7 @@ def new_answer():
 @app.route('/question/<id>/vote', methods=["POST", "GET"])
 def route_vote(id):
     question = data_handler.count_votes(id)
-    return render_template("vote.html", question=question)
+    return render_template("vote.html", question = question, id = id)
 
 
 
