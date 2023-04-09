@@ -40,16 +40,22 @@ def ask_question():
 def route_answer(id):
     return render_template("new-answer.html", id=id)
 
-@app.route('/new-answer', methods=["POST","GET"])
+@app.route('/new-answer', methods=["POST", "GET"])
 def new_answer():
     next_id = data_handler.get_next_id("answer")
     current_date = str(datetime.now())[0:19]
-    image = ""
+
+    if 'file' not in request.files:
+        image = ""
+    else:
+        file = request.files['file']
+        image = data_handler.save_file(file, next_id, "answer")
+    
     if request.method == 'POST':
         your_answer = [next_id, current_date, "0", str(request.form.get('id')), request.form.get('new-answer'), image ]
-        new_str = "/question/" + str(request.form.get('id'))
+        redirect_dir = "/question/" + str(request.form.get('id'))
         data_handler.add_answer(your_answer)
-        return redirect(new_str)
+        return redirect(redirect_dir)
     return render_template("new-answer.html")
 
 @app.route('/question/<id>/vote', methods=["POST", "GET"])

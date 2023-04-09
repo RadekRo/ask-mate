@@ -56,7 +56,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def save_file(file, question_id, selector):
+def save_file(file, current_id, selector):
 
     if selector == "question":
         upload_folder = UPLOAD_FOLDER_FOR_QUESTIONS
@@ -64,9 +64,9 @@ def save_file(file, question_id, selector):
         upload_folder = UPLOAD_FOLDER_FOR_ANSWERS
 
     if file and allowed_file(file.filename) and file.filename != "":
-        saved_name = question_id + ".jpg"
+        saved_name = current_id + ".jpg"
         file.save(os.path.join(upload_folder, saved_name))
-        return "/" + upload_folder + question_id + ".jpg"
+        return "/" + upload_folder + current_id + ".jpg"
     else:
         return ""
     
