@@ -13,6 +13,7 @@
     <form method="post" action="{{ url_for('route_vote',id=question[0])}}">
     <button type="submit">Vote for this question</button></form>
     <b>Number of votes already for this question: {{question[3]}}</b>
+    <a href="{{ url_for('delete_question',id=question[0])}}">DELETE CURRENT QUESTION</a><br /><br />
 </div>
 {% if answers|length > 0 %}
 <div class="question-list">

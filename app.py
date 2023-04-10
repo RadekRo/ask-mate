@@ -13,6 +13,7 @@ def route_list():
     all_questions = data_handler.get_all_questions()
     return render_template("list.html", all_questions = all_questions)
 
+
 @app.route('/question/<id>')
 def route_question(id):
     question = data_handler.get_question(id)
@@ -38,9 +39,11 @@ def ask_question():
         return redirect(redirect_dir)
     return render_template("ask-question.html")
 
+
 @app.route('/question/<id>/new-answer')
 def route_answer(id):
     return render_template("new-answer.html", id=id)
+
 
 @app.route('/new-answer', methods=["POST", "GET"])
 def new_answer():
@@ -60,12 +63,15 @@ def new_answer():
         return redirect(redirect_dir)
     return render_template("new-answer.html")
 
+
 @app.route('/question/<id>/vote', methods=["POST", "GET"])
 def route_vote(id):
     question = data_handler.count_votes(id)
     return render_template("vote.html", question = question, id = id)
 
-
+@app.route('/question/<id>/delete')
+def delete_question(id):
+    return redirect("/")
 
 if __name__ == '__main__':
     app.run()
