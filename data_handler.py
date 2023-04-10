@@ -93,4 +93,6 @@ def count_votes(id):
             save_data(DATA_FILE_PATH_QUESTION, questions)
 
 def delete_question(id):
-    pass
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    #TODO - deleting a question and all connected answers
