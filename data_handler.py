@@ -92,3 +92,5 @@ def count_votes(id):
             question[3] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)
 
+def delete_question(id):
+    pass
