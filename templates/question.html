@@ -22,6 +22,11 @@
     {% for answer in answers %}
         <p>
             {{answer[4]}}
+            {% if answer[5] != "" %}
+            <div class="container">
+                <img src={{answer[5]}} style="max-width: 150px"/>
+            </div>
+            {% endif %}
         </p>
     {% endfor %}
 </div>
