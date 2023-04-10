@@ -26,7 +26,14 @@ def get_question(id):
         if question[0] == id:
             return question
         
-    
+def get_answers(question_id):
+    all_answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    selected_answers = list()
+    for answer in all_answers:
+        if answer[3] == question_id:
+            selected_answers.append(answer)
+    return selected_answers
+
 def get_next_id(selector):
     if selector == "answer":
         data_file = import_data_file(DATA_FILE_PATH_ANSWER )

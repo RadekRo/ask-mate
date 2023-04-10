@@ -11,12 +11,13 @@ app = Flask(__name__)
 @app.route('/list')
 def route_list():
     all_questions = data_handler.get_all_questions()
-    return render_template("list.html", all_questions=all_questions)
+    return render_template("list.html", all_questions = all_questions)
 
 @app.route('/question/<id>')
 def route_question(id):
     question = data_handler.get_question(id)
-    return render_template("question.html", question=question)
+    answers = data_handler.get_answers(id)
+    return render_template("question.html", question = question, answers = answers)
 
 
 @app.route('/ask-question', methods=["POST","GET"])
