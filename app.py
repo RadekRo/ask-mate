@@ -34,7 +34,7 @@ def ask_question():
     if request.method == 'POST':
         your_question = [next_id, current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
         data_handler.add_question(your_question)
-        redirect_dir = "/question/" + str(next.id) 
+        redirect_dir = "/question/" + str(next_id) 
         return redirect(redirect_dir)
     return render_template("ask-question.html")
 
