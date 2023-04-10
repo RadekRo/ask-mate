@@ -26,7 +26,14 @@ def get_question(id):
         if question[0] == id:
             return question
         
-    
+def get_answers(question_id):
+    all_answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    selected_answers = list()
+    for answer in all_answers:
+        if answer[3] == question_id:
+            selected_answers.append(answer)
+    return selected_answers
+
 def get_next_id(selector):
     if selector == "answer":
         data_file = import_data_file(DATA_FILE_PATH_ANSWER )
@@ -56,7 +63,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def save_file(file, question_id, selector):
+def save_file(file, current_id, selector):
 
     if selector == "question":
         upload_folder = UPLOAD_FOLDER_FOR_QUESTIONS
@@ -64,9 +71,9 @@ def save_file(file, question_id, selector):
         upload_folder = UPLOAD_FOLDER_FOR_ANSWERS
 
     if file and allowed_file(file.filename) and file.filename != "":
-        saved_name = question_id + ".jpg"
+        saved_name = current_id + ".jpg"
         file.save(os.path.join(upload_folder, saved_name))
-        return "/" + upload_folder + question_id + ".jpg"
+        return "/" + upload_folder + current_id + ".jpg"
     else:
         return ""
     
@@ -85,3 +92,7 @@ def count_votes(id):
             question[3] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)
 
+def delete_question(id):
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    #TODO - deleting a question and all connected answers

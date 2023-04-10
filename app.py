@@ -11,12 +11,14 @@ app = Flask(__name__)
 @app.route('/list')
 def route_list():
     all_questions = data_handler.get_all_questions()
-    return render_template("list.html", all_questions=all_questions)
+    return render_template("list.html", all_questions = all_questions)
+
 
 @app.route('/question/<id>')
 def route_question(id):
     question = data_handler.get_question(id)
-    return render_template("question.html", question=question)
+    answers = data_handler.get_answers(id)
+    return render_template("question.html", question = question, answers = answers)
 
 
 @app.route('/ask-question', methods=["POST","GET"])
@@ -33,31 +35,43 @@ def ask_question():
     if request.method == 'POST':
         your_question = [next_id, current_date, "0", "0", request.form.get('title'), request.form.get('message'), image ]
         data_handler.add_question(your_question)
-        return redirect("/")
+        redirect_dir = "/question/" + str(next_id) 
+        return redirect(redirect_dir)
     return render_template("ask-question.html")
+
 
 @app.route('/question/<id>/new-answer')
 def route_answer(id):
     return render_template("new-answer.html", id=id)
 
-@app.route('/new-answer', methods=["POST","GET"])
+
+@app.route('/new-answer', methods=["POST", "GET"])
 def new_answer():
     next_id = data_handler.get_next_id("answer")
     current_date = str(datetime.now())[0:19]
-    image = ""
+
+    if 'file' not in request.files:
+        image = ""
+    else:
+        file = request.files['file']
+        image = data_handler.save_file(file, next_id, "answer")
+    
     if request.method == 'POST':
         your_answer = [next_id, current_date, "0", str(request.form.get('id')), request.form.get('new-answer'), image ]
-        new_str = "/question/" + str(request.form.get('id'))
+        redirect_dir = "/question/" + str(request.form.get('id'))
         data_handler.add_answer(your_answer)
-        return redirect(new_str)
+        return redirect(redirect_dir)
     return render_template("new-answer.html")
+
 
 @app.route('/question/<id>/vote', methods=["POST", "GET"])
 def route_vote(id):
     question = data_handler.count_votes(id)
-    return render_template("vote.html", question=question)
+    return render_template("vote.html", question = question, id = id)
 
-
+@app.route('/question/<id>/delete')
+def delete_question(id):
+    return redirect("/")
 
 if __name__ == '__main__':
     app.run()
