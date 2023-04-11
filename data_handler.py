@@ -100,30 +100,16 @@ def delete_question(id):
     for question in questions:
         if question[0] == str(id):
             file_path = "static/images/questions/" + str(id) + ".jpg" 
-            print(file_path)
-            if os.path.exists(file_path):
-                #os.remove("demofile.txt")
-                print("File exists! You can delete it!")
-            else:
-                print("The file does not exist")
+            os.path.exists(file_path) and os.remove(file_path)
             continue
         else:
             questions_filtered.append(question)
     for answer in answers:
         if answer[3] == str(id):
             file_path = "static/images/answers/" + str(answer[0]) + ".jpg" 
-            print(file_path)
-            if os.path.exists(file_path):
-                #os.remove("demofile.txt")
-                print("File exists! You can delete it!")
-            else:
-                print("The file does not exist")
+            os.path.exists(file_path) and os.remove(file_path)
             continue
         else:
             answers_filtered.append(answer)
-    return questions_filtered, answers_filtered
-    #save_data(DATA_FILE_PATH_QUESTION, questions_filtered)
-    #TODO - deleting all connected answers
-
-
-print(delete_question(1))
+    save_data(DATA_FILE_PATH_QUESTION, questions_filtered)
+    save_data(DATA_FILE_PATH_ANSWER, answers_filtered)
