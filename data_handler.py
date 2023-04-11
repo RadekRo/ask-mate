@@ -113,3 +113,19 @@ def remove_question(id):
             answers_filtered.append(answer)
     save_data(DATA_FILE_PATH_QUESTION, questions_filtered)
     save_data(DATA_FILE_PATH_ANSWER, answers_filtered)
+
+def remove_answer(id):
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    answers_filtered = list()
+    question_id = 0
+    for answer in answers:
+        if answer[0] == str(id):
+            file_path = "static/images/answers/" + str(id) + ".jpg" 
+            os.path.exists(file_path) and os.remove(file_path)
+            question_id = answer[3]
+            continue
+        else:
+            answers_filtered.append(answer)
+
+    save_data(DATA_FILE_PATH_ANSWER, answers_filtered)
+    return question_id
