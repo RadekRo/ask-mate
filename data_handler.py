@@ -17,7 +17,9 @@ def import_data_file(filename):
 
 
 def get_all_questions():
-    return import_data_file(DATA_FILE_PATH_QUESTION)
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    questions.sort(key = lambda inner:inner[1], reverse=True)
+    return questions
 
 
 def get_question(id):
@@ -92,7 +94,40 @@ def count_votes(id):
             question[3] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)
 
-def delete_question(id):
+def remove_question(id):
     questions = import_data_file(DATA_FILE_PATH_QUESTION)
     answers = import_data_file(DATA_FILE_PATH_ANSWER)
-    #TODO - deleting a question and all connected answers
+    questions_filtered = list()
+    answers_filtered = list()
+    for question in questions:
+        if question[0] == str(id):
+            file_path = "static/images/questions/" + str(id) + ".jpg" 
+            os.path.exists(file_path) and os.remove(file_path)
+            continue
+        else:
+            questions_filtered.append(question)
+    for answer in answers:
+        if answer[3] == str(id):
+            file_path = "static/images/answers/" + str(answer[0]) + ".jpg" 
+            os.path.exists(file_path) and os.remove(file_path)
+            continue
+        else:
+            answers_filtered.append(answer)
+    save_data(DATA_FILE_PATH_QUESTION, questions_filtered)
+    save_data(DATA_FILE_PATH_ANSWER, answers_filtered)
+
+def remove_answer(id):
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    answers_filtered = list()
+    question_id = 0
+    for answer in answers:
+        if answer[0] == str(id):
+            file_path = "static/images/answers/" + str(id) + ".jpg" 
+            os.path.exists(file_path) and os.remove(file_path)
+            question_id = answer[3]
+            continue
+        else:
+            answers_filtered.append(answer)
+
+    save_data(DATA_FILE_PATH_ANSWER, answers_filtered)
+    return question_id
