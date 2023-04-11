@@ -95,4 +95,21 @@ def count_votes(id):
 def delete_question(id):
     questions = import_data_file(DATA_FILE_PATH_QUESTION)
     answers = import_data_file(DATA_FILE_PATH_ANSWER)
-    #TODO - deleting a question and all connected answers
+    questions_filtered = list()
+    answers_filtered = list()
+    for question in questions:
+        if question[0] == str(id):
+            continue
+        else:
+            questions_filtered.append(question)
+    for answer in answers:
+        if answer[3] == str(id):
+            continue
+        else:
+            answers_filtered.append(answer)
+    return questions_filtered, answers_filtered
+    #save_data(DATA_FILE_PATH_QUESTION, questions_filtered)
+    #TODO - deleting all connected answers
+
+
+print(delete_question(2))
