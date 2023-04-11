@@ -71,6 +71,7 @@ def route_vote(id):
 
 @app.route('/question/<id>/delete')
 def delete_question(id):
+    data_handler.remove_question(id)
     return redirect("/")
 
 if __name__ == '__main__':

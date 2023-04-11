@@ -92,7 +92,7 @@ def count_votes(id):
             question[3] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)
 
-def delete_question(id):
+def remove_question(id):
     questions = import_data_file(DATA_FILE_PATH_QUESTION)
     answers = import_data_file(DATA_FILE_PATH_ANSWER)
     questions_filtered = list()
