@@ -17,7 +17,9 @@ def import_data_file(filename):
 
 
 def get_all_questions():
-    return import_data_file(DATA_FILE_PATH_QUESTION)
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    questions.sort(key = lambda inner:inner[1], reverse=True)
+    return questions
 
 
 def get_question(id):
