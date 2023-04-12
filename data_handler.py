@@ -131,3 +131,14 @@ def remove_answer(id):
 
     save_data(DATA_FILE_PATH_ANSWER, answers_filtered)
     return question_id
+
+def update_question(question_id, question_date, question_title, question_message, question_image):
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    updated_question = [question_date, question_title, question_message]
+    updated_image = question_image
+    for question in questions:
+        if question[0] == str(question_id):
+            question[1], question[4], question[5] = updated_question
+            if updated_image != "":
+                question[6] = updated_image
+    save_data(DATA_FILE_PATH_QUESTION, questions)

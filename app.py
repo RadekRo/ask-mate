@@ -82,7 +82,31 @@ def delete_answer(id):
 
 @app.route('/question/<id>/edit')
 def edit_question(id):
-    redirect_dir = "/question/" + id
+    question = data_handler.get_question(id)
+    return render_template("edit-question.html", id = id, question = question)
+
+@app.route('/question/update', methods=["GET", "POST"])
+def update_question():
+
+    if request.method == 'POST':
+        question_id = request.form.get('id')    
+        print(question_id)
+        current_date = str(datetime.now())[0:19]
+    
+        if 'file' not in request.files:
+            image = ""
+        else:
+            file = request.files['file']
+            image = data_handler.save_file(file, question_id, "question")
+        updated_date = current_date
+        updated_title = request.form.get('title')
+        updated_message = request.form.get('message')
+        updated_image = image
+
+    data_handler.update_question(question_id, updated_date, updated_title, updated_message, updated_image)
+
+    redirect_dir = "/question/" + str(question_id)
+    print(redirect_dir)
     return redirect(redirect_dir)
 
 if __name__ == '__main__':
