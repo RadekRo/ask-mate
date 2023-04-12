@@ -68,9 +68,14 @@ def new_answer():
         return redirect(redirect_dir)
     return render_template("new-answer.html")
 
-@app.route('/question/<id>/vote', methods=["POST", "GET"])
-def route_vote(id):
-    question = data_handler.count_votes(id)
+@app.route('/question/<id>/vote_add', methods=["POST", "GET"])
+def route_vote_add(id):
+    question = data_handler.add_vote_question(id)
+    return render_template("vote.html", question = question, id = id)
+
+@app.route('/question/<id>/vote_substract', methods=["POST", "GET"])
+def route_vote_substract(id):
+    question = data_handler.substract_vote_question(id)
     return render_template("vote.html", question = question, id = id)
 
 @app.route('/question/<id>/delete')

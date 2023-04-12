@@ -92,13 +92,23 @@ def add_answer(answer):
     answers.append(answer)
     save_data(DATA_FILE_PATH_ANSWER, answers)
 
-def count_votes(id):
+def add_vote_question(id):
     questions = import_data_file(DATA_FILE_PATH_QUESTION)
     for question in questions:
         if question[0] == id:
             votes = question[3]
             votes = int(votes)
             votes += 1
+            question[3] = str(votes)
+            save_data(DATA_FILE_PATH_QUESTION, questions)
+
+def substract_vote_question(id):
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    for question in questions:
+        if question[0] == id:
+            votes = question[3]
+            votes = int(votes)
+            votes -= 1
             question[3] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)
 
