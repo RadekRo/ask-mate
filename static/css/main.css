@@ -19,6 +19,11 @@ header {
 .heading, .question-list {
     max-width: 1000px; 
     margin: 0 auto;
+    
+}
+
+.buttons {
+    display: flex;
 }
 
 .answer {
