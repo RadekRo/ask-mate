@@ -18,8 +18,8 @@ def route_list():
 def route_question(id):
     question = data_handler.get_question(id)
     answers = data_handler.get_answers(id)
-    return render_template("question.html", question = question, answers = answers)
-
+    view = data_handler.count_view(id)
+    return render_template("question.html", question = question, answers = answers, view = view)
 @app.route('/answer/<answer_id>/vote_answer', methods=["POST", "GET"])
 def route_answer_vote(answer_id):
     answers = data_handler.count_votes_answer(answer_id)
