@@ -20,6 +20,11 @@ def route_question(id):
     answers = data_handler.get_answers(id)
     return render_template("question.html", question = question, answers = answers)
 
+@app.route('/answer/<answer_id>/vote_answer', methods=["POST", "GET"])
+def route_answer_vote(answer_id):
+    answers = data_handler.count_votes_answer(answer_id)
+    id = request.form.get("id")
+    return render_template("vote.html", answer_id = answer_id, id = id, answers = answers)
 
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
@@ -55,14 +60,13 @@ def new_answer():
     else:
         file = request.files['file']
         image = data_handler.save_file(file, next_id, "answer")
-    
+
     if request.method == 'POST':
         your_answer = [next_id, current_date, "0", str(request.form.get('id')), request.form.get('new-answer'), image ]
         redirect_dir = "/question/" + str(request.form.get('id'))
         data_handler.add_answer(your_answer)
         return redirect(redirect_dir)
     return render_template("new-answer.html")
-
 
 @app.route('/question/<id>/vote', methods=["POST", "GET"])
 def route_vote(id):
