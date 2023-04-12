@@ -28,6 +28,13 @@ def get_question(id):
         if question[0] == id:
             return question
         
+
+def get_answer(id):
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    for answer in answers:
+        if answer[0] == id:
+            return answer
+        
 def get_answers(question_id):
     all_answers = import_data_file(DATA_FILE_PATH_ANSWER)
     selected_answers = list()
@@ -35,6 +42,7 @@ def get_answers(question_id):
         if answer[3] == question_id:
             selected_answers.append(answer)
     return selected_answers
+
 
 def get_next_id(selector):
     if selector == "answer":
@@ -93,6 +101,17 @@ def count_votes(id):
             votes += 1
             question[3] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)
+
+def count_votes_answer(answer_id):
+    answers = import_data_file(DATA_FILE_PATH_ANSWER)
+    for answer in answers:
+        if answer[0] == answer_id:
+            votes_answer = answer[2]
+            votes_answer = int(votes_answer)
+            votes_answer += 1
+            answer[2] = str(votes_answer)
+            save_data(DATA_FILE_PATH_ANSWER, answers)
+            return answers
 
 def remove_question(id):
     questions = import_data_file(DATA_FILE_PATH_QUESTION)

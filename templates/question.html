@@ -23,6 +23,10 @@
     {% for answer in answers %}
         <p class="answer">
             {{answer[4]}}
+            <form method="post" action="{{ url_for('route_answer_vote', answer_id=answer[0])}}">
+            <br/><button type="submit">Vote for this answer</button>
+            <input type="hidden" name="id" value={{question[0]}}></form>
+            <br/><b>Number of votes already for this answer: {{answer[2]}}</b><br/>
             {% if answer[5] != "" %}
                 <br/>
                 <img src={{answer[5]}} style="max-width: 150px"/>
