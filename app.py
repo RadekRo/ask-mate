@@ -20,9 +20,15 @@ def route_question(id):
     answers = data_handler.get_answers(id)
     return render_template("question.html", question = question, answers = answers)
 
-@app.route('/answer/<answer_id>/vote_answer', methods=["POST", "GET"])
-def route_answer_vote(answer_id):
-    answers = data_handler.count_votes_answer(answer_id)
+@app.route('/answer/<answer_id>/answer_add_vote', methods=["POST", "GET"])
+def route_answer_add_vote(answer_id):
+    answers = data_handler.add_vote_answer(answer_id)
+    id = request.form.get("id")
+    return render_template("vote.html", answer_id = answer_id, id = id, answers = answers)
+
+@app.route('/answer/<answer_id>/answer_substract_vote', methods=["POST", "GET"])
+def route_answer_substract_vote(answer_id):
+    answers = data_handler.substract_vote_answer(answer_id)
     id = request.form.get("id")
     return render_template("vote.html", answer_id = answer_id, id = id, answers = answers)
 
