@@ -10,6 +10,8 @@
                     <th>data</th>
                     <th>viewed</th>
                     <th>votes</th>
+                    <th>Vote +</th>
+                    <th>Vote -</th>
                     <th>title</th>
                     <th>message</th>
                     <!--<th>image</th>-->
@@ -20,9 +22,14 @@
                     <td>{{questions[1]}}</td>
                     <td>{{questions[2]}}</td>
                     <td>{{questions[3]}}</td>
+                    <td><form method="post" action="{{ url_for('route_vote_add',id=questions[0])}}">
+                        <button type="submit">+</button></form></td>
+                    <td><form method="post" action="{{ url_for('route_vote_substract',id=questions[0])}}">
+                            <button type="submit">-</button></form></td>
                     <td><a href="{{ url_for('route_question',id=questions[0])}}">{{questions[4]}}</a></td>
                     <td>{{questions[5]}}</td>
                     <!--<td>{{questions[6]}}</td>-->
+                    
                 
                 </tr>
                 {%endfor%}

@@ -10,13 +10,6 @@
         </div>
     {% endif %}
     <a href="{{ url_for('route_answer',id=question[0])}}">Add new answer</a><br/><br/>
-    Add or remove vote for this question
-    <div class="buttons">
-    <form method="post" action="{{ url_for('route_vote_add',id=question[0])}}">
-    <button type="submit" style="width:30px; height:30px;">+</button></form>
-    <form method="post" action="{{ url_for('route_vote_substract',id=question[0])}}">
-    <button type="submit" style="width:30px; height:30px;">-</button></form>
-    </div>
     Number of votes already for this question: {{question[3]}}<br/><br/>
     <a href="{{ url_for('delete_question',id=question[0])}}">DELETE CURRENT QUESTION</a><br/>
     <a href="{{ url_for('edit_question',id=question[0])}}">EDIT CURRENT QUESTION</a><br /><br/>
