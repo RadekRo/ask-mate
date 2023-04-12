@@ -84,6 +84,11 @@ def delete_answer(id):
     redirect_dir = "/question/" + question_id
     return redirect(redirect_dir)
 
+@app.route('/question/<id>/edit')
+def edit_question(id):
+    redirect_dir = "/question/" + id
+    return redirect(redirect_dir)
+
 if __name__ == '__main__':
     app.run()
 
