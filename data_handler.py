@@ -182,3 +182,13 @@ def update_question(question_id, question_date, question_title, question_message
             if updated_image != "":
                 question[6] = updated_image
     save_data(DATA_FILE_PATH_QUESTION, questions)
+
+def count_view(id):
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    for question in questions:
+        if question[0] == id:
+            votes = question[2]
+            votes = int(votes)
+            votes += 1
+            question[2] = str(votes)
+            save_data(DATA_FILE_PATH_QUESTION, questions)    
