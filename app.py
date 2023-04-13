@@ -23,15 +23,19 @@ def route_question(id):
 
 @app.route('/answer/<answer_id>/answer_add_vote', methods=["POST", "GET"])
 def route_answer_add_vote(answer_id):
-    answers = data_handler.add_vote_answer(answer_id)
+    data_handler.add_vote_answer(answer_id)
     id = request.form.get("id")
-    return render_template("vote.html", answer_id = answer_id, id = id, answers = answers)
+    redirect_dir = "/question/" + str(id) 
+    return redirect(redirect_dir)
+    
 
 @app.route('/answer/<answer_id>/answer_substract_vote', methods=["POST", "GET"])
 def route_answer_substract_vote(answer_id):
-    answers = data_handler.substract_vote_answer(answer_id)
+    data_handler.substract_vote_answer(answer_id)
     id = request.form.get("id")
-    return render_template("vote.html", answer_id = answer_id, id = id, answers = answers)
+    redirect_dir = "/question/" + str(id) 
+    return redirect(redirect_dir)
+    
 
 @app.route('/ask-question', methods=["POST","GET"])
 def ask_question():
