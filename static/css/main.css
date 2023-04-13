@@ -114,6 +114,15 @@ a:active {
 .back{
     display: flex;
     justify-content: flex-start;
+    background-color:  #04717184;
+    width: 32%;
+    border-radius: 12px;
+    margin-top: 5px;
+}
+
+.back:hover{
+  text-decoration-line: none;
+  color: #444444;
 }
 
 .question-list{
@@ -123,8 +132,7 @@ a:active {
 .question-title{
   display: flex;
   justify-content: center;
-  background-color: hsla(180, 93%, 23%, 0.667);
-
+  background-color: hsla(180, 82%, 33%, 0.667);
 }
 
 .question-txt{
@@ -137,16 +145,48 @@ a:active {
   padding: 2% 2%;
 }
 
+.pictures{
+  margin-bottom: 5%;
+}
 
 .add-answer{
   padding: 2%;
-  background: hsla(180, 93%, 23%, 0.518);
+  background: #04717184;
   border-radius: 12px;
+}
 
+.del-edit{
+  display: grid;
+  gap: 4px;
+  grid-template-areas: 'del edit';
+}
+
+.delete:hover{
+  text-decoration-line: none;
+  color: #444444;
+}
+
+.edit:hover{
+  text-decoration-line: none;
+  color: #444444;
+}
+
+.delete{
+  padding: 2%;
+  background: #04717184;
+  border-radius: 12px;
+grid-area: del;
+}
+
+.edit{
+  padding: 2%;
+  background: #04717184;
+  border-radius: 12px;
+grid-area: edit;
 }
 
 .add-answer:hover{
-  color: silver;
+  color: #444444;
   text-decoration-line: none;
 }
 
@@ -158,10 +198,36 @@ a:active {
 .answer-title{
   display: flex;
   justify-content: center;
-  background-color: hsla(180, 93%, 23%, 0.667);
+  background-color: hsla(180, 82%, 33%, 0.667);
 }
 
 .answer{
   background-color: rgba(201, 193, 193, 0.399);
   padding: 2% 2%;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  
+
+}
+
+.plus{
+  background-color: #047171b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+  margin-right: 10px;
+}
+
+.minus{
+  background-color: #047171b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1px 8px 1px 8px;
+
 }
