@@ -77,13 +77,13 @@ def new_answer():
 
 @app.route('/question/<id>/vote_add', methods=["POST", "GET"])
 def route_vote_add(id):
-    question = data_handler.add_vote_question(id)
-    return render_template("vote.html", question = question, id = id)
+    data_handler.add_vote_question(id)
+    return redirect("/")
 
 @app.route('/question/<id>/vote_substract', methods=["POST", "GET"])
 def route_vote_substract(id):
-    question = data_handler.substract_vote_question(id)
-    return render_template("vote.html", question = question, id = id)
+    data_handler.substract_vote_question(id)
+    return redirect("/")
 
 @app.route('/question/<id>/delete')
 def delete_question(id):
