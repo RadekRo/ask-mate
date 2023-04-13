@@ -11,6 +11,8 @@ app = Flask(__name__)
 @app.route('/list')
 def route_list():
     all_questions = data_handler.get_all_questions()
+    order_by = request.args.get('order_by')
+    order_direction = request.args.get('order_direction')
     return render_template("list.html", all_questions = all_questions)
 
 
@@ -126,7 +128,6 @@ def update_question():
 
     redirect_dir = "/question/" + str(question_id)
     return redirect(redirect_dir)
-
 
 
 if __name__ == '__main__':
