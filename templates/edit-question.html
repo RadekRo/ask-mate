@@ -2,7 +2,7 @@
 {% block content %}
     <div class="question-list">
         <form action="/question/update" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="{{id}}"
+            <input type="hidden" name="id" value="{{id}}">
         <p>
             <label for="title">Question title:</label><br/>
             <input id="title" name="title" type="text" value="{{question[4]}}" />

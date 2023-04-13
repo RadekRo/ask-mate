@@ -1,19 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-        <div class="container">
-            <a href="/ask-question">Ask a question</a>
-        </div>
+       
         <div class="question-list">
-            <table>
-                <tr>
+            <table class="table table-borderless">
+                <tr class="table-title">
                     <!--<th>id</th>-->
-                    <th>data</th>
-                    <th>viewed</th>
-                    <th>votes</th>
-                    <th>Vote +</th>
-                    <th>Vote -</th>
-                    <th>title</th>
-                    <th>message</th>
+                    <th>DATA</th>
+                    <th>VIEWS</th>
+                    <th>VOTES</th>
+                    <th>VOTE</th>
+                    <th>TITLE</th>
+                    <th>MESSAGE</th>
                     <!--<th>image</th>-->
                 </tr>
                 {% for questions in all_questions %}
@@ -22,10 +19,10 @@
                     <td>{{questions[1]}}</td>
                     <td>{{questions[2]}}</td>
                     <td>{{questions[3]}}</td>
-                    <td><form method="post" action="{{ url_for('route_vote_add',id=questions[0])}}">
-                        <button type="submit">+</button></form></td>
-                    <td><form method="post" action="{{ url_for('route_vote_substract',id=questions[0])}}">
-                            <button type="submit">-</button></form></td>
+                    <td class="butt"><form method="post" action="{{ url_for('route_vote_add',id=questions[0])}}">
+                        <button class="vote-button butt-1" type="submit">+</button></form>
+                        <form method="post" action="{{ url_for('route_vote_substract',id=questions[0])}}">
+                            <button class="vote-button butt-2" type="submit">-</button></form></td>
                     <td><a href="{{ url_for('route_question',id=questions[0])}}">{{questions[4]}}</a></td>
                     <td>{{questions[5]}}</td>
                     <!--<td>{{questions[6]}}</td>-->
