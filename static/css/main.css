@@ -3,31 +3,30 @@ body {
   padding: 0;
 }
 
-header{
-    position: relative;
+header {
+  position: relative;
   text-align: center;
-  
 }
 
 .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-    color: #0c0c0c;
-    font-size: 20px;
-    text-shadow: 1px 1px 2px rgb(235, 228, 0), 0 0 25px rgb(197, 231, 96), 0 0 5px darkblue;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  color: #0c0c0c;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgb(235, 228, 0), 0 0 25px rgb(197, 231, 96),
+    0 0 5px darkblue;
+}
 
 .image-head {
-height: 200px;
-width: 100%;
+  height: 200px;
+  width: 100%;
 }
 
 #container {
   margin: 0 auto;
- 
 }
 
 .heading,
@@ -57,15 +56,15 @@ width: 100%;
 }
 
 .ask-question {
-    height: 100%;
+  height: 100%;
   padding-top: 4px;
   padding-right: 5%;
   padding-left: 10px;
   border-left: 4px double rgb(108, 104, 104);
 }
 
-.ask-question:hover{
-    background-color: rgb(206, 202, 202);
+.ask-question:hover {
+  background-color: rgb(206, 202, 202);
 }
 
 .logo {
@@ -85,149 +84,147 @@ a:visited {
 a:hover,
 a:active {
   color: darkcyan;
-  text-decoration-line: underline
+  text-decoration-line: underline;
 }
 
 .vote-button {
-    background-color: darkcyan;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
+  background-color: darkcyan;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.butt{
-    display: grid;
-    gap: 4px;
-    grid-template-areas: 'butt-1 butt-2';
+.butt {
+  display: grid;
+  gap: 4px;
+  grid-template-areas: "butt-1 butt-2";
 }
 
-.butt-1{
-    grid-area: butt-1;
+.butt-1 {
+  grid-area: butt-1;
 }
 
-.butt-2{
-    padding: 1px 8px 1px 8px;
-    grid-area: butt-2;
+.butt-2 {
+  padding: 1px 8px 1px 8px;
+  grid-area: butt-2;
 }
 
-.back{
-    display: flex;
-    justify-content: flex-start;
-    background-color:  #04717184;
-    width: 32%;
-    border-radius: 12px;
-    margin-top: 5px;
+.back {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #04717184;
+  width: 32%;
+  border-radius: 12px;
+  margin-top: 5px;
 }
 
-.back:hover{
+.back:hover {
   text-decoration-line: none;
   color: #444444;
 }
 
-.question-list{
+.question-list {
   text-align: center;
 }
 
-.question-title{
+.question-title {
   display: flex;
   justify-content: center;
   background-color: hsla(180, 82%, 33%, 0.667);
 }
 
-.question-txt{
+.question-txt {
   background-color: rgba(201, 193, 193, 0.399);
   width: 100%;
 }
 
-.txt{
+.txt {
   text-align: center;
   padding: 2% 2%;
 }
 
-.pictures{
+.pictures {
   margin-bottom: 5%;
 }
 
-.add-answer{
+.add-answer {
   padding: 2%;
   background: #04717184;
   border-radius: 12px;
 }
 
-.del-edit{
+.del-edit {
   display: grid;
   gap: 4px;
-  grid-template-areas: 'del edit';
+  grid-template-areas: "del edit";
 }
 
-.delete:hover{
+.delete:hover {
   text-decoration-line: none;
   color: #444444;
 }
 
-.edit:hover{
+.edit:hover {
   text-decoration-line: none;
   color: #444444;
 }
 
-.delete{
+.delete {
   padding: 2%;
   background: #04717184;
   border-radius: 12px;
-grid-area: del;
+  grid-area: del;
 }
 
-.edit{
+.edit {
   padding: 2%;
   background: #04717184;
   border-radius: 12px;
-grid-area: edit;
+  grid-area: edit;
 }
 
-.add-answer:hover{
+.add-answer:hover {
   color: #444444;
   text-decoration-line: none;
 }
 
-.answer-list{
+.answer-list {
   text-align: center;
   background-color: rgba(201, 193, 193, 0.399);
 }
 
-.answer-title{
+.answer-title {
   display: flex;
   justify-content: center;
-  background-color: hsla(180, 82%, 33%, 0.667);
+  background-color: #2ea30d92;
 }
 
-.answer{
+.answer {
   background-color: rgba(201, 193, 193, 0.399);
   padding: 2% 2%;
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
-  
-
 }
 
-.plus{
-  background-color: #047171b9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
+.plus {
+  background-color: #2ea30db9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
   margin-right: 10px;
 }
 
-.minus{
-  background-color: #047171b9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    padding: 1px 8px 1px 8px;
-
+.minus {
+  background-color: #2ea30db9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 1px 8px 1px 8px;
 }
+
