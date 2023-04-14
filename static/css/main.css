@@ -232,6 +232,7 @@ a:active {
   margin-top: 10px;
   border: 3px inset black;
   border-radius: 12px;
+  width: 55%;
 }
 
 .add-img{
