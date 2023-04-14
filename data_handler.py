@@ -194,17 +194,17 @@ def count_view(id):
             save_data(DATA_FILE_PATH_QUESTION, questions)    
 
 def sort_questions(order_by, order_direction, questions):
-    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    reverse = True if order_direction == "desc" else False
     if order_by == 'title':
-        questions.sort(key=lambda inner: inner[1], reverse=(order_direction == 'desc'))
+        questions.sort(key = lambda inner:inner[4], reverse = reverse)
     elif order_by == 'date':
-        questions.sort(key=lambda inner: inner[1], reverse=(order_direction == 'desc'))
+        questions.sort(key = lambda inner:inner[1], reverse = reverse)
     elif order_by == 'views':
-        questions.sort(key=lambda q: q[1], reverse=(order_direction == 'desc'))
+        questions.sort(key = lambda inner:int(inner[2]), reverse = reverse)
     elif order_by == 'votes':
-        questions.sort(key=lambda q: q[1], reverse=(order_direction == 'desc'))
+        questions.sort(key = lambda inner:int(inner[3]), reverse = reverse)
     elif order_by == 'message':
-        questions.sort(key=lambda inner: inner[1], reverse=(order_direction == 'desc'))
+        questions.sort(key = lambda inner:inner[5], reverse = reverse)
     else:
         questions = questions     
     return questions    
