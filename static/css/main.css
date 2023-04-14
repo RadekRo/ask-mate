@@ -228,3 +228,6 @@ a:active {
   padding: 1px 8px 1px 8px;
 }
 
+.delete-answer:hover{
+  color: #2ea30d92;
+}

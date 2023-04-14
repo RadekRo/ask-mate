@@ -38,7 +38,7 @@
             <input type="hidden" name="id" value={{question[0]}}></form>
             </div>
             <br/><center>Number of votes already for this answer: <b>{{answer[2]}}</b> </center><br/>
-            <a href="{{ url_for('delete_answer',id=answer[0],ids=question[0])}}">DELETE ANSWER</a>
+            <a class="delete-answer" href="{{ url_for('delete_answer',id=answer[0],ids=question[0])}}">DELETE ANSWER</a>
         </p>
     {% endfor %}
 </div>
