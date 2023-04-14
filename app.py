@@ -19,9 +19,7 @@ def route_list():
     order_by = request.args.get('order_by')
     order_direction = request.args.get('order_direction')
     all_questions = data_handler.get_all_questions()
-    order_by = request.args.get('order_by')
-    order_direction = request.args.get('order_direction')
-    all_questions = data_handler.sort(order_by, order_direction, all_questions)
+    all_questions = data_handler.sort_questions(order_by, order_direction, all_questions)
     return render_template("list.html", all_questions = all_questions)
 
 
