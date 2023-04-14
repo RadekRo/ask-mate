@@ -18,9 +18,10 @@ app = Flask(__name__)
 def route_list():
     order_by = request.args.get('order_by')
     order_direction = request.args.get('order_direction')
-    print(order_by, order_direction)
+    order_by = "date" if order_by == None else order_by
+    order_direction = "desc" if order_direction == None else order_direction
     all_questions = data_handler.get_all_questions()
-    sorted_questions = data_handler.sort_questions(order_by, order_direction, all_questions)
+    sorted_questions = data_handler.sort_questions(all_questions, order_by, order_direction)
     return render_template("list.html", questions = sorted_questions, sort_options = [order_by, order_direction])
 
 

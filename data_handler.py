@@ -193,7 +193,7 @@ def count_view(id):
             question[2] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)    
 
-def sort_questions(order_by, order_direction, questions):
+def sort_questions(questions, order_by, order_direction):
     reverse = True if order_direction == "desc" else False
     if order_by == 'title':
         questions.sort(key = lambda inner:inner[4], reverse = reverse)
