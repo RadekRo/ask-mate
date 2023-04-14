@@ -93,12 +93,14 @@ def new_answer():
 @app.route('/question/<id>/vote_add', methods=["POST", "GET"])
 def route_vote_add(id):
     data_handler.add_vote_question(id)
-    return redirect("/")
+    redirect_dir = "/?order_by=" + request.form.get('order_by') + "&order_direction=" + request.form.get('order_direction')
+    return redirect(redirect_dir)
 
 @app.route('/question/<id>/vote_substract', methods=["POST", "GET"])
 def route_vote_substract(id):
     data_handler.substract_vote_question(id)
-    return redirect("/")
+    redirect_dir = "/?order_by=" + request.form.get('order_by') + "&order_direction=" + request.form.get('order_direction')
+    return redirect(redirect_dir)
 
 @app.route('/question/<id>/delete')
 def delete_question(id):

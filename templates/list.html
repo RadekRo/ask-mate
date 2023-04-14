@@ -48,10 +48,18 @@
             <td>{{question[1]}}</td>
             <td>{{question[2]}}</td>
             <td>{{question[3]}}</td>
-            <td class="butt"><form method="post" action="{{ url_for('route_vote_add',id=question[0])}}">
-                <button class="vote-button butt-1" type="submit">+</button></form>
+            <td class="butt">
+                <form method="post" action="{{ url_for('route_vote_add',id=question[0])}}">
+                    <input type="hidden" name="order_by" value="{{sort_options[0]}}">
+                    <input type="hidden" name="order_direction" value="{{sort_options[1]}}">
+                    <button class="vote-button butt-1" type="submit">+</button>
+                </form>
                 <form method="post" action="{{ url_for('route_vote_substract',id=question[0])}}">
-                    <button class="vote-button butt-2" type="submit">-</button></form></td>
+                    <input type="hidden" name="order_by" value="{{sort_options[0]}}">
+                    <input type="hidden" name="order_direction" value="{{sort_options[1]}}">
+                    <button class="vote-button butt-2" type="submit">-</button>
+                </form>
+            </td>
             <td><a href="{{ url_for('route_question',id=question[0])}}">{{question[4]}}</a></td>
             <td>{{question[5]}}</td>
             <!--<td>{{question[6]}}</td>-->
