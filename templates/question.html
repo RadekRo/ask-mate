@@ -19,7 +19,7 @@
         </div>
 </div>
 {% if answers|length > 0 %}
-<div class="answer-list row">
+<div class="question-list row">
     <br />
     <b class="answer-title">ANSWERS</b>
     {% for answer in answers %}
@@ -27,7 +27,7 @@
             {{answer[4]}}
             {% if answer[5] != "" %}
             <br/>
-            <img src={{answer[5]}} style="max-width: 150px"/>
+            <img src={{answer[5]}} style="max-width: 200px"/>
             {% endif %}
             <div class="buttons">
             <form method="post" action="{{ url_for('route_answer_add_vote', answer_id=answer[0])}}">
