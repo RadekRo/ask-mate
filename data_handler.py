@@ -18,7 +18,7 @@ def import_data_file(filename):
 
 def get_all_questions():
     questions = import_data_file(DATA_FILE_PATH_QUESTION)
-    questions.sort(key = lambda inner:inner[1], reverse=True)
+    # questions.sort(key = lambda inner:inner[1], reverse=True)
     return questions
 
 
@@ -192,3 +192,19 @@ def count_view(id):
             votes += 1
             question[2] = str(votes)
             save_data(DATA_FILE_PATH_QUESTION, questions)    
+
+def sort_questions(order_by, order_direction, questions):
+    questions = import_data_file(DATA_FILE_PATH_QUESTION)
+    if order_by == 'title':
+        questions.sort(key=lambda inner: inner[1], reverse=(order_direction == 'desc'))
+    elif order_by == 'date':
+        questions.sort(key=lambda inner: inner[1], reverse=(order_direction == 'desc'))
+    elif order_by == 'views':
+        questions.sort(key=lambda q: q[1], reverse=(order_direction == 'desc'))
+    elif order_by == 'votes':
+        questions.sort(key=lambda q: q[1], reverse=(order_direction == 'desc'))
+    elif order_by == 'message':
+        questions.sort(key=lambda inner: inner[1], reverse=(order_direction == 'desc'))
+    else:
+        questions = questions     
+    return questions    
