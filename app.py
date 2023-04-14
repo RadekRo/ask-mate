@@ -19,7 +19,9 @@ def route_list():
     order_by = request.args.get('order_by')
     order_direction = request.args.get('order_direction')
     all_questions = data_handler.get_all_questions()
-    all_questions = data_handler.sort_questions(order_by, order_direction, all_questions)
+    order_by = request.args.get('order_by')
+    order_direction = request.args.get('order_direction')
+    all_questions = data_handler.sort(order_by, order_direction, all_questions)
     return render_template("list.html", all_questions = all_questions)
 
 
@@ -119,7 +121,6 @@ def update_question():
 
     if request.method == 'POST':
         question_id = request.form.get('id')    
-        print(question_id)
         current_date = str(datetime.now())[0:19]
     
         if 'file' not in request.files:
@@ -135,8 +136,8 @@ def update_question():
     data_handler.update_question(question_id, updated_date, updated_title, updated_message, updated_image)
 
     redirect_dir = "/question/" + str(question_id)
-    print(redirect_dir)
     return redirect(redirect_dir)
+
 
 if __name__ == '__main__':
     app.run()
