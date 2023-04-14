@@ -1,17 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="question-list">
+    <div class="question-list question-txt ">
         <form action="/new-answer" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value={{id}}>
         <p>
-            <label for="new-answer">Answer:</label><br/>
+            <label class="answer-title" for="new-answer">Answer:</label><br/>
             <textarea id="new-answer" name="new-answer" rows="4" cols="50"></textarea>
         </p>
         <p>
-            <label for="image">Image (only jpg files allowed):</label><br/>
-            <input id="file" name="file" type = "file" />
+            <label class="add-img" for="image">Image (only jpg files allowed):</label><br/>
+            <input class="add-img" id="file" name="file" type = "file" />
         </p>
-        <button type="submit">Add your answer</button>
+        <button class="add-your-answer" type="submit">Add your answer</button>
         </form>
     </div>
 {% endblock %}
