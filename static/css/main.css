@@ -60,7 +60,7 @@ header {
 }
 
 .table-title {
-  background-color: #047373;
+  background-color: #0473739e;
 }
 
 a:link,
@@ -84,16 +84,19 @@ a:active {
 }
 
 .butt {
+  height: 80px;
   display: grid;
   gap: 4px;
   grid-template-areas: "butt-1 butt-2";
 }
 
 .butt-1 {
+  margin-top: 50%;
   grid-area: butt-1;
 }
 
 .butt-2 {
+  margin-top: 50%;
   padding: 1px 8px 1px 8px;
   grid-area: butt-2;
 }
